@@ -13,7 +13,7 @@ spec:
   storageType: Durable
   terminationPolicy: Delete
   version: "15.5"
-  replicas: 4
+  replicas: 2
   podPlacementPolicy:
     name: spread-across-zones
 #    name: majority-on-spot

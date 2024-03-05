@@ -34,8 +34,13 @@ Create Ec2NodeClass & NodePools. See `nodepool.sh` for example.
 
 ## Apply PlacementPolicies
 
-`kubectl apply -f ./work/placement.yaml`
+`kubectl apply -f ./placement.yaml`
+
+## Edit pg-coordinator image
+```bash
+kubectl patch pgversion <pg-version-name> --type=merge -p '{"spec":{"coordinator":{"image":"ghcr.io/kubedb/pg-coordinator:v0.27.0-petset.0"}}}'
+```
 
 ## Apply Database
 
-`kubectl apply -f ./work/postgres.yaml`
+`kubectl apply -f ./postgres.yaml`
