@@ -1,0 +1,21 @@
+apiVersion: kubedb.com/v1alpha2
+kind: Postgres
+metadata:
+  name: pp
+spec:
+  storage:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: gp2
+  storageType: Durable
+  terminationPolicy: Delete
+  version: "15.5"
+  replicas: 4
+  podPlacementPolicy:
+    name: spread-across-zones
+#    name: majority-on-spot
+
+# kubectl patch pgversion 15.5 --type=merge -p '{"spec":{"coordinator":{"image":"ghcr.io/kubedb/pg-coordinator:v0.27.0-petset.0"}}}'
